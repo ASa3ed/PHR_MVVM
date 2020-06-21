@@ -1,6 +1,13 @@
-﻿using System;
+﻿using Infrastructure.Enums;
+using Infrastructure.Extensions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Text;
+using System.Web;
 
 namespace Infrastructure.Utils
 {
@@ -11,10 +18,10 @@ namespace Infrastructure.Utils
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static string ObjectToJsonString(object obj)
+        public static string ObjectToJsonString(object obj, CaseStrategy @case)
         {
             var serializerSettings = new JsonSerializerSettings();
-            switch (ApplicationManager.Instance.GetServerInfo().DefaultCaseStrategy)
+            switch (@case)
             {
                 case CaseStrategy.SnakeCase:
                     serializerSettings.ContractResolver = new DefaultContractResolver
@@ -31,24 +38,13 @@ namespace Infrastructure.Utils
                 case CaseStrategy.Pascal:
                     throw new NotImplementedException();
                 default:
-                    throw new InvalidEnumArgumentException(typeof(Serialization).Name, (int)ApplicationManager.Instance.GetServerInfo().DefaultCaseStrategy, typeof(CaseStrategy));
+                    throw new InvalidEnumArgumentException(typeof(Serialization).Name, (int)@case, typeof(CaseStrategy));
             }
 
             return obj == null ? string.Empty : JsonConvert.SerializeObject(obj, serializerSettings);
         }
 
 
-        /// <summary>
-        /// Converts Object to query params where the key format depends on CaseStrategy 
-        /// Used in GET:query or POST:forms
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static string ObjectToKeyValueString(object obj)
-        {
-            return ObjectToKeyValueString(obj, ApplicationManager.Instance.GetServerInfo().DefaultCaseStrategy);
-
-        }
         public static string ObjectToKeyValueString(object obj, CaseStrategy caseStrategy)
         {
             var keyValuePair = string.Empty;
@@ -71,7 +67,7 @@ namespace Infrastructure.Utils
                 case CaseStrategy.Pascal:
                     throw new NotImplementedException();
                 default:
-                    throw new InvalidEnumArgumentException(typeof(Serialization).Name, (int)ApplicationManager.Instance.GetServerInfo().DefaultCaseStrategy, typeof(CaseStrategy));
+                    throw new InvalidEnumArgumentException(typeof(Serialization).Name, (int)caseStrategy, typeof(CaseStrategy));
             }
 
             keyValuePair = string.Join("&", properties.ToArray());

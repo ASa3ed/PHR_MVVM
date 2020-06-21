@@ -22,7 +22,13 @@ namespace Infrastructure.Interfaces
         /// <typeparam name="T">Response object</typeparam>
         /// <typeparam name="L">Business object</typeparam>
         Task<T> Post<T>(HttpPostRequest request) where T : BaseResponse;
-        Task<T> PostMultimedia(Htt)
+        /// <summary>
+        /// Post binary files
+        /// </summary>
+        /// <typeparam name="T">Response object</typeparam>
+        /// <param name="request">Buisness object</param>
+        /// <returns></returns>
+        Task<T> PostMultimedia<T>(HttpPostFileRequest request) where T : BaseResponse;
         /// <summary>
         /// Perform PUT operation
         /// </summary>

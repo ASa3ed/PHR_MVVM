@@ -1,4 +1,5 @@
-﻿using Infrastructure.Extensions;
+﻿using Infrastructure.Enums;
+using Infrastructure.Extensions;
 using Infrastructure.Models;
 using Infrastructure.Utils;
 using System;
@@ -11,20 +12,19 @@ namespace Infrastructure.Requests
 {
     public class HttpPostFileRequest : HttpRequest
     {
-        public HttpPostFileRequest(string url, object queryParameters, UploadFile file, List<KeyValuePair<string, string>> headers)
-    : base(url, headers)
+        public HttpPostFileRequest(string url, string contentName, object content, UploadFile[] files, List<KeyValuePair<string, string>> headers)
+            : base(url, headers)
         {
             Method = HttpMethod.Post;
             ContentType = Enums.ContentType.Multipart.ToDescriptionString();
-            QueryString = Serialization.ObjectToKeyValueString(queryParameters);
+            Content = new StringContent(Serialization.ObjectToJsonString(content, CaseStrategy.CamelCase), Encoding.UTF8, Enums.ContentType.Json.ToDescriptionString());
 
-            File = file;
-
+            Files = files;
         }
 
-        public UploadFile File { get; set; }
+        public UploadFile[] Files { get; set; }
 
-        public string QueryString { get; set; }
-
+        public StringContent Content { get; set; }
+        public string ContentName { get; set; }
     }
 }

@@ -65,12 +65,6 @@ namespace Infrastructure.Providers
 
         }
 
-        public Task<T> Put<T>(HttpRequest request) where T : BaseResponse
-        {
-            throw new NotImplementedException();
-        }
-
-
         public async Task<T> Post<T>(HttpPostRequest request) where T : BaseResponse
         {
             var client = await GetHttpClient(request.Headers);
@@ -130,6 +124,33 @@ namespace Infrastructure.Providers
 
 
             var result = await ResolveHttpResponse<T>(httpResponseMessage, null);
+            return result;
+        }
+
+        public async Task<T> PostMultimedia<T>(HttpPostFileRequest request) where T : BaseResponse
+        {
+            var client = await GetHttpClient(request.Headers);
+
+
+            var multipartForm = new MultipartFormDataContent();
+
+            foreach (var file in request.Files)
+                multipartForm.Add(file.Content, file.Name, file.FilePath);
+
+
+            multipartForm.Add(request.Content, request.ContentName);
+            var httpRequestMessage = new HttpRequestMessage(request.Method, $"{request.Url}")
+            {
+
+                Content = multipartForm
+            };
+
+            httpRequestMessage.Content.Headers.ContentType = new MediaTypeHeaderValue(request.ContentType);
+
+            var httpResponseMessage = await client.SendAsync(httpRequestMessage);
+
+            var result = await ResolveHttpResponse<T>(httpResponseMessage, null);
+
             return result;
         }
 
