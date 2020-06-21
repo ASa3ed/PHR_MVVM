@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "h9kIaEmc5snIgGOqv4Od7tfx0+tzc7QRv0icly+S5AlikSiN0eW2GQh7A+Wf/SYB1wfjoNdELv71ge7Vhwac+w==",
+  "success": true,
+  "projectFilePath": "D:\\repos\\PHR_MVVM\\PHR_MVVM\\Infrastructure\\Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\sqlite-net-pcl\\1.6.292\\sqlite-net-pcl.1.6.292.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\sqlitenetextensions\\2.1.0\\sqlitenetextensions.2.1.0.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\sqlitenetextensions.async\\2.1.0\\sqlitenetextensions.async.2.1.0.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\sqlitepclraw.bundle_green\\1.1.13\\sqlitepclraw.bundle_green.1.1.13.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\sqlitepclraw.core\\1.1.13\\sqlitepclraw.core.1.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}

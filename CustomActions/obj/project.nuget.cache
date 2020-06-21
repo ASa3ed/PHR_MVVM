@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "YE4Jy5+baX0Yy6DClLcEU8GUYp4l8W4A67H4sEgdnJMgYHu/PGhXTmLDjOtqrWfUEnhquVpb7FpShnk5IpH2og==",
+  "success": true,
+  "projectFilePath": "D:\\repos\\PHR_MVVM\\CustomActions\\CustomActions.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\plugin.multilingual\\1.0.2\\plugin.multilingual.1.0.2.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\plugin.permissions\\3.0.0.12\\plugin.permissions.3.0.0.12.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\syncfusion.licensing\\16.4.0.54\\syncfusion.licensing.16.4.0.54.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\syncfusion.xamarin.core\\16.4.0.54\\syncfusion.xamarin.core.16.4.0.54.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\syncfusion.xamarin.datasource\\16.4.0.54\\syncfusion.xamarin.datasource.16.4.0.54.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\syncfusion.xamarin.gridcommon\\16.4.0.54\\syncfusion.xamarin.gridcommon.16.4.0.54.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\syncfusion.xamarin.sfcalendar\\16.4.0.53\\syncfusion.xamarin.sfcalendar.16.4.0.53.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\syncfusion.xamarin.sflistview\\16.4.0.54\\syncfusion.xamarin.sflistview.16.4.0.54.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\system.componentmodel.annotations\\4.5.0\\system.componentmodel.annotations.4.5.0.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\xam.plugin.media\\4.0.1.5\\xam.plugin.media.4.0.1.5.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\xamarin.essentials\\1.5.1\\xamarin.essentials.1.5.1.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\xamarin.ffimageloading\\2.4.11.982\\xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\xamarin.ffimageloading.forms\\2.4.11.982\\xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
+    "C:\\Users\\karim.saeed\\.nuget\\packages\\xamarin.forms\\4.1.0.778454\\xamarin.forms.4.1.0.778454.nupkg.sha512"
+  ],
+  "logs": []
+}
