@@ -1,4 +1,5 @@
-﻿using Infrastructure.Extensions;
+﻿using Infrastructure.Enums;
+using Infrastructure.Extensions;
 using Infrastructure.Utils;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Infrastructure.Requests
 
 
             ContentType = Enums.ContentType.Json.ToDescriptionString();
-            Body = Serialization.ObjectToJsonString(body);
+            Body = Serialization.ObjectToJsonString(body, CaseStrategy.Pascal);
         }
 
         public string Body { get; set; }

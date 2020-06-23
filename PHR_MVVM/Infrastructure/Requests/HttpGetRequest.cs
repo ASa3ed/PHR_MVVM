@@ -1,4 +1,5 @@
-﻿using Infrastructure.Utils;
+﻿using Infrastructure.Enums;
+using Infrastructure.Utils;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -12,7 +13,7 @@ namespace Infrastructure.Requests
             : base(url, headers)
         {
             Method = HttpMethod.Get;
-            QueryString = Serialization.ObjectToKeyValueString(queryParameters);
+            QueryString = Serialization.ObjectToKeyValueString(queryParameters, CaseStrategy.Pascal);
 
         }
 
