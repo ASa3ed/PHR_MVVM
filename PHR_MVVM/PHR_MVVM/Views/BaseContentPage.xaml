@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PHR_MVVM.Views.BaseContentPage">
+
+
+    <Grid FlowDirection="{Binding Rtl}" ColumnSpacing="0" RowSpacing="0">
+        <Grid.Triggers>
+            <DataTrigger TargetType="Grid" Binding="{Binding Rtl}" Value="0">
+                <Setter Property="FlowDirection" Value="LeftToRight" />
+            </DataTrigger>
+            <DataTrigger TargetType="Grid" Binding="{Binding Rtl}" Value="1">
+                <Setter Property="FlowDirection" Value="RightToLeft" />
+            </DataTrigger>
+        </Grid.Triggers>
+
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ContentView x:Name="ViewContainer"  Grid.Row="1">
+                <!--< Your control design goes here >-->
+            </ContentView>
+
+            <Grid Grid.Row="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image x:Name="Background"  Aspect="Fill"/>
+                <BoxView x:Name="BackgroundOverlay" />
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+    
+</ContentView>

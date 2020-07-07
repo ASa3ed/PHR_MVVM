@@ -41,6 +41,10 @@ namespace PHR_MVVM.ViewModels
         private bool isBusy;
         public bool IsBusy { get => isBusy; set => SetProperty(ref isBusy, value); }
 
+        private bool rtl;
+        public bool Rtl { get => rtl; set => SetProperty(ref rtl, value); }
+
+
         public event EventHandler IsActiveChanged;
 
         public virtual void Destroy()
