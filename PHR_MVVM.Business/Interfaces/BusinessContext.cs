@@ -12,7 +12,7 @@ namespace PHR_MVVM.Business.Interfaces
         protected INetworkProvider NetworkProvider;
         protected IMapper Mapper;
         protected IStorageProvider StorageProvider; 
-        protected readonly string BaseUrl = URI.BaseURL;
+        //protected virtual string BaseUrl { get; set; } = URI.BaseURL;
         protected BusinessContext(INetworkProvider networkProvider, IStorageProvider storageProvider, IMapper mapper)
         {
             NetworkProvider = networkProvider;
