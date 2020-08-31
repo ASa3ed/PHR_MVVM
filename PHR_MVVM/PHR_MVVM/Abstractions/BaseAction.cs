@@ -9,8 +9,7 @@ namespace PHR_MVVM.Abstractions
     public class BaseCommandHandler : DelegateCommand
     {
 
-        public BaseCommandHandler(Action action, Func<bool> canExecute = null, Action<Exception> error = null)
-            : base(
+        public BaseCommandHandler(Action action, Func<bool> canExecute = null, Action error = null) : base(
             () =>
             {
                 try
@@ -20,7 +19,7 @@ namespace PHR_MVVM.Abstractions
                 }
                 catch (Exception ex)
                 {
-                    error?.Invoke(ex);
+                    error?.Invoke();
                 }
             }, () => true)
         {

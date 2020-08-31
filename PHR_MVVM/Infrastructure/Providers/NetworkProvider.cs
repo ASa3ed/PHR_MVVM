@@ -25,10 +25,16 @@ namespace Infrastructure.Providers
         {
             this.semaphore = new SemaphoreSlim(httpclientPoolSize);
         }
-        public async Task<T> Get<T>(HttpGetRequest request)
+        public async Task<T> Get<T>(HttpGetRequest request) where T : BaseResponse
         {
             var client = await GetHttpClient(request.Headers);
             //Add Control Fields To Request Headers
+            request.Headers.ForEach(kv =>
+            {
+                client.DefaultRequestHeaders.Remove(kv.Key); // keep headers updated
+                client.DefaultRequestHeaders.Add(kv.Key, kv.Value);
+            });
+
 
             var httpRequestMessage = new HttpRequestMessage(request.Method, $"{request.Url}" + (string.IsNullOrEmpty(request.QueryString) ? "" : $"?{request.QueryString}"));
 
@@ -37,29 +43,29 @@ namespace Infrastructure.Providers
 
             var result = await ResolveHttpResponse<T>(httpResponseMessage, null);
 
-            return result.Result;
+            return result;
         }
 
-        private async Task<BaseResponse<T>> ResolveHttpResponse<T>(HttpResponseMessage httpResponseMessage, object p)
+        private async Task<T> ResolveHttpResponse<T>(HttpResponseMessage httpResponseMessage, object p) where T : BaseResponse
         {
             if (httpResponseMessage != null)
             {
                 var dataAsString = await httpResponseMessage.Content.ReadAsStringAsync();
                 if (httpResponseMessage.StatusCode == HttpStatusCode.InternalServerError)
                 {
-                    return new BaseResponse<T> { StatusCode = HttpStatusCode.InternalServerError };
+                    return (T)new BaseResponse { StatusCode = HttpStatusCode.InternalServerError };
                 }
                 else if (httpResponseMessage.StatusCode != HttpStatusCode.ServiceUnavailable)
                 {
 
-                    return JsonConvert.DeserializeObject<BaseResponse<T>>(dataAsString);
+                    return JsonConvert.DeserializeObject<T>(dataAsString);
                 }
             }
-            return new BaseResponse<T> { StatusCode = HttpStatusCode.BadRequest };
+            return (T)new BaseResponse { StatusCode = HttpStatusCode.BadRequest };
 
         }
 
-        public async Task<T> Post<T>(HttpPostRequest request)
+        public async Task<T> Post<T>(HttpPostRequest request) where T : BaseResponse
         {
             var client = await GetHttpClient(request.Headers);
             //Add Control Fields To Request Headers
@@ -75,10 +81,10 @@ namespace Infrastructure.Providers
 
 
             var result = await ResolveHttpResponse<T>(httpResponseMessage, null);
-            return result.Result;
+            return result;
         }
 
-        public async Task<T> Put<T>(HttpPutRequest request)
+        public async Task<T> Put<T>(HttpPutRequest request) where T : BaseResponse
         {
 
             var client = await GetHttpClient(request.Headers);
@@ -94,10 +100,10 @@ namespace Infrastructure.Providers
 
 
             var result = await ResolveHttpResponse<T>(httpResponseMessage, null);
-            return result.Result;
+            return result;
         }
 
-        public async Task<T> Delete<T>(HttpDeleteRequest request)
+        public async Task<T> Delete<T>(HttpDeleteRequest request) where T : BaseResponse
         {
             var client = await GetHttpClient(request.Headers);
             //Add Control Fields To Request Headers
@@ -118,10 +124,10 @@ namespace Infrastructure.Providers
 
 
             var result = await ResolveHttpResponse<T>(httpResponseMessage, null);
-            return result.Result;
+            return result;
         }
 
-        public async Task<T> PostMultimedia<T>(HttpPostFileRequest request)
+        public async Task<T> PostMultimedia<T>(HttpPostFileRequest request) where T : BaseResponse
         {
             var client = await GetHttpClient(request.Headers);
 
@@ -145,7 +151,7 @@ namespace Infrastructure.Providers
 
             var result = await ResolveHttpResponse<T>(httpResponseMessage, null);
 
-            return result.Result;
+            return result;
         }
 
         private async Task<HttpClient> GetHttpClient(List<KeyValuePair<string, string>> headers)

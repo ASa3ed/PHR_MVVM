@@ -13,7 +13,7 @@ namespace Infrastructure.Requests
             : base(url, headers)
         {
             Method = HttpMethod.Get;
-            QueryString = Serialization.ObjectToKeyValueString(queryParameters, CaseStrategy.CamelCase);
+            QueryString = Serialization.ObjectToKeyValueString(queryParameters, CaseStrategy.Pascal);
 
         }
 

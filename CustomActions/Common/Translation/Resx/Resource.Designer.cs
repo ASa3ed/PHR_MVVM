@@ -232,15 +232,6 @@ namespace CustomActions.Common.Translation.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In order to proceed with the action, we would need to be given the permission to do so. either click again and choose to allow or allow it manually from the settings.
-        /// </summary>
-        public static string AllowOrGoToSettings {
-            get {
-                return ResourceManager.GetString("AllowOrGoToSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to All Districts.
         /// </summary>
         public static string AllPlaces {
@@ -1263,15 +1254,6 @@ namespace CustomActions.Common.Translation.Resx {
         public static string en {
             get {
                 return ResourceManager.GetString("en", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Would you like to enable this feature from the settings.
-        /// </summary>
-        public static string EnableFromSettingsRequest {
-            get {
-                return ResourceManager.GetString("EnableFromSettingsRequest", resourceCulture);
             }
         }
         

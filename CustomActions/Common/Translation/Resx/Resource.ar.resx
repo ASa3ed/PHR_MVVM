@@ -1500,10 +1500,4 @@
   <data name="ECounsultation" xml:space="preserve">
     <value>استشر أونلاين</value>
   </data>
-  <data name="EnableFromSettingsRequest" xml:space="preserve">
-    <value>هل ترغب في اتاحة هذه الخاصة من الاعدادت؟</value>
-  </data>
-  <data name="AllowOrGoToSettings" xml:space="preserve">
-    <value>نحن بحاجة لتصريحك لاتمام هذه العملية, الرجاء اما الضغط مجددا و اختيار الاتاحة, أو الاتاحة يدويا عن طريق الاعدادت </value>
-  </data>
 </root>

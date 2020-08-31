@@ -1500,10 +1500,4 @@
   <data name="ECounsultation" xml:space="preserve">
     <value>E-Counsultation</value>
   </data>
-  <data name="EnableFromSettingsRequest" xml:space="preserve">
-    <value>Would you like to enable this feature from the settings</value>
-  </data>
-  <data name="AllowOrGoToSettings" xml:space="preserve">
-    <value>In order to proceed with the action, we would need to be given the permission to do so. either click again and choose to allow or allow it manually from the settings</value>
-  </data>
 </root>
