@@ -15,32 +15,32 @@ namespace Infrastructure.Interfaces
         /// </summary>
         /// <typeparam name="T">Response object</typeparam>
         /// <typeparam name="L">Business object</typeparam>
-        Task<T> Get<T>(HttpGetRequest request) where T : BaseResponse;
+        Task<T> Get<T>(HttpGetRequest request);
         /// <summary>
         /// Perform POST operation
         /// </summary>
         /// <typeparam name="T">Response object</typeparam>
         /// <typeparam name="L">Business object</typeparam>
-        Task<T> Post<T>(HttpPostRequest request) where T : BaseResponse;
+        Task<T> Post<T>(HttpPostRequest request);
         /// <summary>
         /// Post binary files
         /// </summary>
         /// <typeparam name="T">Response object</typeparam>
         /// <param name="request">Buisness object</param>
         /// <returns></returns>
-        Task<T> PostMultimedia<T>(HttpPostFileRequest request) where T : BaseResponse;
+        Task<T> PostMultimedia<T>(HttpPostFileRequest request);
         /// <summary>
         /// Perform PUT operation
         /// </summary>
         /// <typeparam name="T">Response object</typeparam>
         /// <typeparam name="L">Business object</typeparam>
-        Task<T> Put<T>(HttpPutRequest request) where T : BaseResponse;
+        Task<T> Put<T>(HttpPutRequest request);
         /// <summary>
         /// Perform DELETE operation
         /// </summary>
         /// <typeparam name="T">Response object</typeparam>
         /// <typeparam name="L">Business object</typeparam>
-        Task<T> Delete<T>(HttpDeleteRequest request) where T : BaseResponse;
+        Task<T> Delete<T>(HttpDeleteRequest request);
 
     }
 }

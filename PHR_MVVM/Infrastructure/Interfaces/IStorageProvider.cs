@@ -18,6 +18,8 @@ namespace Infrastructure.Interfaces
         Task<bool> DeleteAll<T>() where T : OfflineDataModel;
         Task<List<T>> ExecuteQuery<T>(string query);
         Task<bool> HasData<T>() where T : OfflineDataModel, new();
-
+        Task DeleteAllItemsAsync<T>(List<T> items) where T : OfflineDataModel, new();
+        Task<int> UpdateAll<T>(List<T> items) where T : OfflineDataModel, new();
+        Task<int> Update(object item);
     }
 }

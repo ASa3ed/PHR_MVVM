@@ -24,8 +24,8 @@ namespace Infrastructure.Providers
         }
         public async Task<bool> DeleteAll<T>() where T : OfflineDataModel
         {
-            if (!(await TableExists<T>()))
-                return false;
+            //if (!(await TableExists<T>()))
+            //    return false;
 
             int rows = await this.con.DeleteAllAsync<T>();
             return rows > 0;
@@ -64,8 +64,9 @@ namespace Infrastructure.Providers
 
         public async Task<T> GetItemAsync<T>(Expression<Func<T, bool>> query) where T : OfflineDataModel, new()
         {
-            if (!(await TableExists<T>()))
-                return null;
+            //if (!(await TableExists<T>()))
+            //    return null;
+            await con.CreateTableAsync<T>();
 
             var item = await this.con.Table<T>().Where(query).FirstOrDefaultAsync();
             return item;
@@ -82,7 +83,7 @@ namespace Infrastructure.Providers
                 int rows = await this.con.InsertOrReplaceAll(items);
                 return rows > 0;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex);
                 return false;
@@ -91,8 +92,7 @@ namespace Infrastructure.Providers
 
         public async Task<bool> SetItemAsync<T>(T data) where T : OfflineDataModel, new()
         {
-            if (!(await TableExists<T>()))
-                await con.CreateTableAsync<T>();
+            await con.CreateTableAsync<T>();
 
             int rows = await this.con.InsertOrReplaceAsync(data);
             return rows > 0;
@@ -128,13 +128,28 @@ namespace Infrastructure.Providers
             {
                 hasData = (await this.con.Table<T>().CountAsync()) > 0;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 hasData = false;
                 Debug.WriteLine(ex);
             }
 
             return hasData;
+        }
+
+        public async Task DeleteAllItemsAsync<T>(List<T> items) where T : OfflineDataModel, new()
+        {
+            await this.con.CreateTableAsync<T>();
+
+            await this.con.DeleteAllAsync(items);
+        }
+        public async Task<int> UpdateAll<T>(List<T> items) where T : OfflineDataModel, new()
+        {
+            return await this.con.UpdateAllAsync(items).ConfigureAwait(false);
+        }
+        public async Task<int> Update(object item)
+        {
+            return await this.con.UpdateAsync(item).ConfigureAwait(false);
         }
     }
 }
